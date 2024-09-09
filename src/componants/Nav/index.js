@@ -9,7 +9,7 @@ const Nav = () => {
       <nav className="bg-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center cursor-pointer">
-            <img src="/logo555.png" alt="notion" width="30" height="30" />
+            <img src="/logo555.png" alt="taskflow" width="30" height="30" />
             <span className="text-lg font-bold ml-2 mr-4">TaskFlow</span>
           </div>
 
