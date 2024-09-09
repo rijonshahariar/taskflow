@@ -5,7 +5,6 @@ const Nav = () => {
   return (
 
     <div>
-
       <nav className="bg-white p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center cursor-pointer">

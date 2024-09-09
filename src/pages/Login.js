@@ -22,7 +22,7 @@ const Login = () => {
                 <div className="container mx-auto flex justify-between items-center">
                     <div className="flex items-center cursor-pointer">
                         <img src="/logo555.png" alt="taskflow" width="30" height="30" />
-                        <span className="text-lg  font-inter font-bold ml-2 mr-4">TaskFlow</span>
+                        <Link to="/">  <span className="text-lg  font-inter font-bold ml-2 mr-4">TaskFlow</span></Link>
                     </div>
                 </div>
         
@@ -76,7 +76,7 @@ const Login = () => {
                     <p>New to TaskFlow? <span><Link to="/register" className="text-blue-500 hover:underline">
                         Register
                     </Link></span></p>
-                    <Link to="" className="text-blue-500 hover:underline">
+                    <Link to="/home" className="text-blue-500 hover:underline">
                         Forgot Password?
                     </Link>
 
