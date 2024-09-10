@@ -14,7 +14,7 @@ const Login = () => {
     return (
         <div>
             <Helmet>
-                <title>Login - Taskflow</title>
+                <title>Login - TaskFlow</title>
             </Helmet>
 
            <div className="max-w-screen-xl mx-auto">

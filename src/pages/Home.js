@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="max-w-screen-xl	mx-auto font-inter">
       <Helmet>
-        <title>Taskflow</title>
+        <title>TaskFlow</title>
       </Helmet>
       <Nav/>
       <Hero/>

@@ -14,7 +14,7 @@ const Register = () => {
     return (
         <div>
             <Helmet>
-                <title>Register - Taskflow</title>
+                <title>Register - TaskFlow</title>
             </Helmet>
 
             <div className="max-w-screen-xl mx-auto">
