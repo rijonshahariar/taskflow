@@ -134,7 +134,7 @@ export default function TaskTable() {
         <div className="p-4">
 
             <div class="fixed bottom-0 right-0 p-4">
-                <button class="bg-gray-800 text-white text-2xl rounded-full w-10 h-10 flex items-center justify-center" onClick={handleAddNewTable}>
+                <button class="bg-gray-800 hover:bg-gray-900 text-white text-2xl rounded-full w-12 h-12 flex items-center justify-center" onClick={handleAddNewTable}>
                     <IoAdd />
                 </button>
             </div>
@@ -160,10 +160,10 @@ export default function TaskTable() {
 
                     ) : (
                         <div className='flex item-center justify-center'>
-                            <th colSpan="100%" className="text-center text-xl p-2 font-semibold">
+                            <th colSpan="100%" className="border-b-4 w-full text-center text-xl p-2 font-semibold">
                                 <button
                                     title="Delete Table"
-                                    className="text-red-500 text-xl hover:text-red-800 mr-2"
+                                    className="text-red-500 text-2xl hover:text-red-800 mr-2"
                                     onClick={() => handleDeleteTable(table.id)}
                                 >
                                     <RiDeleteBin2Line />
@@ -178,7 +178,7 @@ export default function TaskTable() {
                             </th>
                         </div>
                     )}
-                    <table className="table-auto w-full border-collapse border-gray-300">
+                    <table className="table-fixed min-w-full border-collapse border-gray-300">
                         <thead>
 
 
@@ -188,7 +188,7 @@ export default function TaskTable() {
                             <tr className="">
                                 <th className="px-2 py-2"></th>
                                 <th className="px-4 py-2">Task Title</th>
-                                <th className="px-4 py-2">Description</th>
+                                <th className="px-4 border-x py-2">Description</th>
                                 <th className="px-4 py-2">Due Date</th>
                                 <th className="px-2 py-2"></th>
                             </tr>
@@ -196,7 +196,7 @@ export default function TaskTable() {
                         <tbody>
                             {table.rows.map((row, rowIndex) => (
                                 <tr key={rowIndex} className={row.isSelected ? 'bg-gray-100' : ''}>
-                                    <td className="border px-2 py-2 text-center">
+                                    <td className=" px-2 py-2 text-center">
                                         <input
                                             className="h-5 w-5 cursor-pointer rounded shadow hover:shadow-md border border-slate-300 checked:bg-black accent-black"
                                             type="checkbox"
@@ -206,42 +206,43 @@ export default function TaskTable() {
                                         />
 
                                     </td>
-                                    <td className="border p-1">
+                                    <td className="border w-1/4 p-1">
                                         <input
                                             type="text"
                                             value={row.taskName}
                                             onChange={(e) =>
                                                 handleCellChange(table.id, rowIndex, 'taskName', e.target.value)
                                             }
-                                            className={`w-full p-2 ${row.isSelected ? 'opacity-50' : ''}`}
+                                            className={`w-full text-sm p-2 ${row.isSelected ? 'opacity-50' : ''}`}
                                             placeholder="Enter task"
                                             disabled={row.isSelected}
                                         />
                                     </td>
                                     <td className="border p-1">
-                                        <input
+                                        <textarea
                                             type="text"
+                                            rows="1"
                                             value={row.assignee}
                                             onChange={(e) =>
                                                 handleCellChange(table.id, rowIndex, 'assignee', e.target.value)
                                             }
-                                            className={`w-full p-2 ${row.isSelected ? 'opacity-50' : ''}`}
+                                            className={`w-full text-sm p-2  ${row.isSelected ? 'opacity-50' : ''}`}
                                             placeholder="Add description"
                                             disabled={row.isSelected}
                                         />
                                     </td>
-                                    <td className="border p-1">
+                                    <td className="border w-1/12 p-1">
                                         <input
                                             type="date"
                                             value={row.due}
                                             onChange={(e) =>
                                                 handleCellChange(table.id, rowIndex, 'due', e.target.value)
                                             }
-                                            className={`w-full p-2 ${row.isSelected ? 'opacity-50' : ''}`}
+                                            className={`w-full text-sm p-2 ${row.isSelected ? 'opacity-50' : ''}`}
                                             disabled={row.isSelected}
                                         />
                                     </td>
-                                    <td className="border p-1 flex justify-center items-center gap-2">
+                                    <td className="p-1 text-center">
                                         <button
                                             className="text-black px-2 py-2 text-2xl rounded hover:text-gray-500"
                                             onClick={() => handleDeleteRow(table.id, rowIndex)}
