@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { Link, NavLink } from "react-router-dom";
 
 export default function DashNav() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -26,46 +27,34 @@ export default function DashNav() {
 
                     {/* Links (visible on larger screens) */}
                     <div className="hidden md:flex items-center space-x-8">
-                        <a
-                            href="#"
-                            onClick={() => handleSetActive("Todos")}
-                            className={`${activeLink === "Todos"
-                                ? "border-b-4 border-black text-gray-900"
-                                : "text-gray-500"
-                                } font-medium hover:text-gray-700 transition duration-300`}
+                        <NavLink
+                            as={Link}
+                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            to="/home"
                         >
                             Todos
-                        </a>
-                        <a
-                            href="#"
-                            onClick={() => handleSetActive("Reading List")}
-                            className={`${activeLink === "Reading List"
-                                    ? "border-b-4 border-black text-gray-900"
-                                    : "text-gray-500"
-                                } font-medium hover:text-gray-700 transition duration-300`}
+                        </NavLink>
+                        <NavLink
+                            as={Link}
+                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            to="/read"
                         >
                             Reading List
-                        </a>
-                        <a
-                            href="#"
-                            onClick={() => handleSetActive("Projects")}
-                            className={`${activeLink === "Projects"
-                                ? "border-b-4 border-black text-gray-900"
-                                : "text-gray-500"
-                                } font-medium hover:text-gray-700 transition duration-300`}
+                        </NavLink>
+                        <NavLink
+                            as={Link}
+                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            to="/projects"
                         >
                             Projects
-                        </a>
-                        <a
-                            href="#"
-                            onClick={() => handleSetActive("Calendar")}
-                            className={`${activeLink === "Calendar"
-                                ? "border-b-4 border-black text-gray-900"
-                                : "text-gray-500"
-                                } font-medium hover:text-gray-700 transition duration-300`}
+                        </NavLink>
+                        <NavLink
+                            as={Link}
+                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            to="/calendar"
                         >
                             Calendar
-                        </a>
+                        </NavLink>
                     </div>
 
                     {/* Right-side buttons */}
@@ -111,7 +100,7 @@ export default function DashNav() {
 
                             {/* User dropdown */}
                             {menuOpen && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg py-2 rounded-lg">
+                                <div className="absolute z-40 right-0 mt-2 w-48 bg-white shadow-lg py-2 rounded-lg">
                                     <a
                                         href="#"
                                         className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
