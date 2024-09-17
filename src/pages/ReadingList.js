@@ -111,7 +111,7 @@ const ReadingList = () => {
                         value={searchTerm}
                         onChange={handleSearchChange}
                         placeholder="Search for a book..."
-                        className="w-1/2 p-3 border border-black border-2 rounded-md"
+                        className="w-full lg:w-1/2 p-3 border border-black border-2 rounded-md"
                     />
                     <button
                         onClick={handleAddBooks}
@@ -146,7 +146,7 @@ const ReadingList = () => {
                     {readingList.map((book) => (
                         <div
                             key={book.id}
-                            className={`flex  ${book.faded ? 'bg-green-300' : 'opacity-100'} flex-col md:flex-row items-start md:items-center w-full px-4 py-2 bg-white shadow-md rounded-md ${book.faded ? 'opacity-50' : 'opacity-100'} transition-opacity duration-300`}
+                            className={`flex  ${book.faded ? 'bg-green-300' : 'opacity-100'} flex-col sm:flex-row items-start md:items-center sm:mx-auto sm:w-3/4 px-4 py-2 bg-white shadow-md rounded-md ${book.faded ? 'opacity-50' : 'opacity-100'} transition-opacity duration-300`}
                         >
                             {/* Book Cover */}
                             <div className="relative">
@@ -167,9 +167,9 @@ const ReadingList = () => {
                             </div>
                             {/* Book Details */}
                             <div className="flex-1">
-                                <h3 className="text-lg font-semibold mb-1 break-words">{book.title.length > 50 ? `${book.title.slice(0, 50)}...` : book.title}</h3>
+                                <h3 className="text-lg font-semibold mb-1 break-words">{book.title.length > 50 ? `${book.title.slice(0, 50)}...` : book.title}  {!book.faded ? (book.pageNumber && book.date ? (<span className='text-blue-500 bg-blue-200 text-sm'>• Reading</span>) :  (<span className='text-yellow-500 bg-yellow-200 text-sm'>• Not Started</span>)) : (<span className='text-green-500 bg-green-200 text-sm'>• Completed</span>)}</h3>
                                 <p className="text-sm text-gray-600 mb-1 break-words">Author: {book.authors}</p>
-                                <p className="text-sm text-gray-600 mb-2 break-words">Description: {book.description.length > 100 ? `${book.description.slice(0, 100)}...` : book.description}</p>
+                                <p className="text-sm text-gray-600 mb-2 break-words">Description: {book.description.length > 50 ? `${book.description.slice(0, 50)}...` : book.description}</p>
                                 <div className="flex  mb-2">
                                     <input
                                         type="date"
@@ -194,6 +194,7 @@ const ReadingList = () => {
                                         className="form-checkbox h-5 w-5 text-blue-600 accent-black"
                                     />
                                     <label htmlFor={`checkbox-${book.id}`} className="ml-2">Mark as Read</label>
+                                   
                                 </div>
                             </div>
                             {/* Buttons on the right side */}

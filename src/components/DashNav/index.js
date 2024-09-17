@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
+import { GoProjectSymlink, GoTasklist } from "react-icons/go";
+import { IoBookOutline, IoCalendarOutline } from "react-icons/io5";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 
@@ -29,31 +31,33 @@ export default function DashNav() {
                     <div className="hidden md:flex items-center space-x-8">
                         <NavLink
                             as={Link}
-                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
-                            to="/home"
+                            className={({ isActive }) => (isActive ? "border-b-4 flex items-center border-black text-gray-900" : "flex items-center text-gray-500")}
+                            to="/tasks"
+                            
                         >
-                            Todos
+                           <GoTasklist/> <span className="ms-1">Tasks</span>
                         </NavLink>
                         <NavLink
                             as={Link}
-                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900 flex items-center" : "flex items-center text-gray-500")}
                             to="/read"
                         >
-                            Reading List
+                            <IoBookOutline /><span className="ms-1">Reading List</span>
                         </NavLink>
                         <NavLink
                             as={Link}
-                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            className={({ isActive }) => (isActive ? "border-b-4 flex items-center border-black text-gray-900" : "flex items-center text-gray-500")}
                             to="/projects"
                         >
-                            Projects
+                            <GoProjectSymlink /><span className="ms-1">Projects</span>
                         </NavLink>
                         <NavLink
                             as={Link}
-                            className={({ isActive }) => (isActive ? "border-b-4 border-black text-gray-900" : "text-gray-500")}
+                            className={({ isActive }) => (isActive ? "border-b-4 flex items-center border-black text-gray-900" : "flex items-center text-gray-500")}
                             to="/calendar"
                         >
-                            Calendar
+                           <IoCalendarOutline />
+                           <span className="ms-1">Calendar</span>
                         </NavLink>
                     </div>
 
@@ -164,19 +168,19 @@ export default function DashNav() {
                 <div className="md:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         <a
-                            href="#"
+                            href="/tasks"
                             className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
                         >
-                            Dashboard
+                            Tasks
                         </a>
                         <a
-                            href="#"
+                            href="/read"
                             className="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-700"
                         >
-                            Team
+                            Reading List
                         </a>
                         <a
-                            href="#"
+                            href="/projects"
                             className="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-700"
                         >
                             Projects

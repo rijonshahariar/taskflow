@@ -180,17 +180,14 @@ export default function TaskTable() {
                     )}
                     <table className="table-fixed min-w-full border-collapse border-gray-300">
                         <thead>
-
-
                             <tr>
-
                             </tr>
                             <tr className="">
-                                <th className="px-2 py-2"></th>
-                                <th className="px-4 py-2">Task Title</th>
-                                <th className="px-4 border-x py-2">Description</th>
-                                <th className="px-4 py-2">Due Date</th>
-                                <th className="px-2 py-2"></th>
+                                <th className="px-2 text-sm py-2">Status</th>
+                                <th className="px-4 text-sm  py-2">Task Name</th>
+                                <th className="px-4 text-sm border-x py-2">Description</th>
+                                <th className="px-4 text-sm py-2">Due</th>
+                                <th className="px-2 text-sm py-2"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -258,7 +255,7 @@ export default function TaskTable() {
                     {/* Add new row button */}
                     <button
                         title="Add Row"
-                        className="text-3xl text-black hover:text-gray-500 rounded mt-2"
+                        className="text-3xl text-gray-500 hover:text-gray-400 rounded mt-2"
                         onClick={() => handleAddNewRow(table.id)}
                     >
                         <CgAddR />
