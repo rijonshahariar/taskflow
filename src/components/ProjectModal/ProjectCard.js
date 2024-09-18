@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProjectDetailsModal from './ProjectDetailsModal';
-import { FaPlay, FaRegStar, FaStar } from 'react-icons/fa';
+import { FaPlay, FaRegFolderOpen, FaRegStar, FaStar } from 'react-icons/fa';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { FiEdit3 } from "react-icons/fi";
 import { toast } from 'react-toastify';
@@ -41,8 +41,8 @@ const ProjectCard = ({ project, deleteProject, updateProject, onFeatureClick }) 
       </button>
       <div className='flex items-center'>
 
-        <h3 className="text-lg font-bold mb-2">{project.name}...</h3>
-        <button><FiEdit3 onClick={() => setModalOpen(true)} className='mb-2 text-gray-400 text-xl' /></button>
+        <h3 className="text-lg flex items-center font-bold mb-2"><FaRegFolderOpen className='mr-2'/>{project.name}...</h3>
+        <button><FiEdit3 onClick={() => setModalOpen(true)} className='mb-2 text-blue-400 text-xl' /></button>
         <p className={`mb-2  ${project.status === 'Pending' && 'text-yellow-800 bg-yellow-100'} ${project.status === 'In progress' && 'text-blue-800 bg-blue-100'} ${project.status === 'Completed' && 'text-green-800 bg-green-100'} text-sm px-1 ms-4`}><span className='text-lg'>•</span> {project.status}</p>
       </div>
       <p className='text-sm text-gray-500'>Description:  {project.description
@@ -78,6 +78,7 @@ const ProjectCard = ({ project, deleteProject, updateProject, onFeatureClick }) 
       {isTaskOpen && (
         <ProjectTaskModal
         projectId={project.id}
+        project={project}
         closeModal={() => setTaskOpen(false)}
       />
       )}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Buttons = () => {
     return (
         <div>
-            <Link to="/register">
+            <Link to="/tasks">
                 <button className="py-[5px] px-[18px] bg-black text-white font-medium text-md  rounded">
                     Try TaskFlow Free
                 </button>

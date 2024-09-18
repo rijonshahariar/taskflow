@@ -25,12 +25,41 @@ const Projects = () => {
     const newProjects = [...projects, project];
     setProjects(newProjects);
     localStorage.setItem('projects', JSON.stringify(newProjects));
+
+    toast("New Project Added!" , {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 0,
+      progressStyle: { background: 'green' },
+      theme: 'colored',
+      style: { background: 'white' },
+    }
+  );
   };
 
   const handleDeleteProject = (id) => {
     const updatedProjects = projects.filter((project) => project.id !== id);
     setProjects(updatedProjects);
+    
     localStorage.setItem('projects', JSON.stringify(updatedProjects));
+    
+      toast('Project Deleted!' , {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: 0,
+        progressStyle: { background: 'red' },
+        theme: 'colored',
+        style: { background: 'white' },
+      }
+    );
   };
 
   const handleUpdateProject = (updatedProject) => {
@@ -39,6 +68,20 @@ const Projects = () => {
     );
     setProjects(updatedProjects);
     localStorage.setItem('projects', JSON.stringify(updatedProjects));
+
+    toast("Updated!", {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: 0,
+      progressStyle: { background: 'blue' },
+      theme: 'colored',
+      style: { background: 'white' },
+    }
+  );
   };
 
   const handleFeatureClick = (projectId) => {
@@ -67,7 +110,6 @@ const Projects = () => {
         theme: 'colored',
         style: { background: 'white' },
       });
-    
     }
   };
 
