@@ -5,6 +5,9 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import ReadingList from "./pages/ReadingList";
+import AIAssistant from "./pages/AIAssistant";
+import DailyRoutine from "./pages/Calendar";
+import Calendar from "./pages/Calendar";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: "read",
     element: <ReadingList />,
+  },
+  {
+    path: "ai",
+    element: <AIAssistant />,
+  },
+  {
+    path: "calendar",
+    element: <Calendar />,
   }
       
   ]);

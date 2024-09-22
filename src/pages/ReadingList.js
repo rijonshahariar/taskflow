@@ -4,6 +4,7 @@ import DashNav from '../components/DashNav';
 import { Helmet } from 'react-helmet-async'
 import { HiOutlineTrash } from 'react-icons/hi';
 import { IoMdAddCircle } from 'react-icons/io';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ReadingList = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -18,6 +19,7 @@ const ReadingList = () => {
     const fetchSuggestions = async (term) => {
         try {
             const response = await axios.get(
+                
                 `https://www.googleapis.com/books/v1/volumes?q=${term}&maxResults=10`
             );
             setSuggestedBooks(response.data.items || []);
@@ -73,6 +75,20 @@ const ReadingList = () => {
         setSuggestedBooks([]);
         setSearchTerm('');
         localStorage.setItem('readingList', JSON.stringify(updatedList));
+
+        toast('New Book Added!' , {
+            position: 'bottom-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            progressStyle: { background: 'green' },
+            theme: 'colored',
+            style: { background: 'white' },
+          }
+        );
     };
 
     // Update reading list entry in local storage
@@ -216,6 +232,7 @@ const ReadingList = () => {
                 </div>
 
             </div>
+            <ToastContainer position="bottom-right" theme="light"/>
         </div>
     );
 };

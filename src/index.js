@@ -5,12 +5,14 @@ import { RouterProvider } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import router from './router.js'
 import { HelmetProvider } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
     <RouterProvider router={router} />
+    <ToastContainer position="bottom-right" theme="light" />
     </HelmetProvider>
   </React.StrictMode>
 );

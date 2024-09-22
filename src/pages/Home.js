@@ -2,6 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import Nav from "../components/Nav/index.js"
 import Hero from '../components/Hero/index.js'
+import { ToastContainer } from 'react-toastify'
 const Home = () => {
   return (
     <div className="max-w-screen-xl	mx-auto font-inter">
