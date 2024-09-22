@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { CgAddR } from 'react-icons/cg';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoAdd } from 'react-icons/io5';
+import { MdClose } from 'react-icons/md';
 import { RiDeleteBack2Line, RiDeleteBin2Line } from 'react-icons/ri';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Main component
 export default function TaskTable() {
@@ -39,8 +41,23 @@ export default function TaskTable() {
             rows: [{ taskName: '', assignee: '', due: '', isSelected: false }],
         };
 
-        setTables([...tables, newTable]);
-        setTableName(''); // Clear input after adding the table
+        setTables([newTable, ...tables]);
+        setTableName('');
+
+        toast('Task Table Added!', {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            progressStyle: { background: 'blue' },
+            theme: 'colored',
+            style: { background: 'white' },
+        }
+        );
+
     };
 
 
@@ -108,6 +125,19 @@ export default function TaskTable() {
     const handleDeleteTable = (tableId) => {
         const updatedTables = tables.filter((table) => table.id !== tableId);
         setTables(updatedTables);
+        toast('Task Table Deleted!', {
+            position: 'bottom-left',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 0,
+            progressStyle: { background: 'red' },
+            theme: 'colored',
+            style: { background: 'white' },
+        }
+        );
     };
 
     const addRow = (tableIndex) => {
@@ -130,6 +160,8 @@ export default function TaskTable() {
         setTables(updatedTables);
     };
 
+    //const sTables = tables.reverse();
+
     return (
         <div className="p-4">
 
@@ -142,7 +174,7 @@ export default function TaskTable() {
             {/* Render all tables */}
             {tables.map((table, tableIndex) => (
 
-                <div key={table.id} className="mb-6">
+                <div key={table.id} className="shadow-md rounded-md mb-6">
                     {isEditing === tableIndex ? (
 
                         <div className='flex item-center justify-center'>
@@ -161,13 +193,6 @@ export default function TaskTable() {
                     ) : (
                         <div className='flex item-center justify-center'>
                             <th colSpan="100%" className="border-b-4 w-full text-center text-xl p-2 font-semibold">
-                                <button
-                                    title="Delete Table"
-                                    className="text-red-500 text-2xl hover:text-red-800 mr-2"
-                                    onClick={() => handleDeleteTable(table.id)}
-                                >
-                                    <RiDeleteBin2Line />
-                                </button>
                                 {table.name}
                                 <button
                                     onClick={() => setIsEditing(tableIndex)} // Start editing
@@ -176,6 +201,13 @@ export default function TaskTable() {
                                     <FaRegEdit />
                                 </button>
                             </th>
+                            <button
+                                title="Delete Table"
+                                className="text-red-500 text-2xl hover:text-red-800 mr-2"
+                                onClick={() => handleDeleteTable(table.id)}
+                            >
+                                <MdClose />
+                            </button>
                         </div>
                     )}
                     <table className="table-fixed min-w-full border-collapse border-gray-300">
@@ -255,7 +287,7 @@ export default function TaskTable() {
                     {/* Add new row button */}
                     <button
                         title="Add Row"
-                        className="text-3xl text-gray-500 hover:text-gray-400 rounded mt-2"
+                        className="text-3xl text-gray-500 hover:text-gray-400 rounded ms-2 mt-2"
                         onClick={() => handleAddNewRow(table.id)}
                     >
                         <CgAddR />
@@ -265,6 +297,7 @@ export default function TaskTable() {
 
                 </div>
             ))}
+            
         </div>
     );
 }

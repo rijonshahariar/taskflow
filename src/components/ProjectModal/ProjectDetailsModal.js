@@ -119,10 +119,10 @@ const ProjectDetailsModal = ({ project, closeModal, updateProject }) => {
         </div>
 
         <div className="flex justify-end mt-4">
-          <button onClick={handleSave} className="bg-green-500 text-white px-4 py-2 rounded mr-2">
+          <button onClick={handleSave} className="bg-black text-white px-4 py-2 rounded-md mr-2">
             Save
           </button>
-          <button onClick={closeModal} className="bg-red-500 text-white px-4 py-2 rounded">
+          <button onClick={closeModal} className="text-black px-4 py-2 rounded">
             Close
           </button>
         </div>
