@@ -9,6 +9,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from "react-toastify";
+import SocialLogin from "../components/SocialLogin/index.js";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -113,12 +114,7 @@ const Register = () => {
                         </button>
                     </form>
 
-                    <div className="mt-6">
-                        <button className="w-full border-solid border-2 border-black bg-white text-black py-2 rounded  flex justify-center items-center">
-                            <FcGoogle className="mr-2 text-2xl" /> {/* Google icon */}
-                            <span>Continue with Google</span>
-                        </button>
-                    </div>
+                    <SocialLogin/>
                     <div className="flex pt-5 justify-between text-sm">
                         <p>Already have an account? <span><Link to="/login" className="text-blue-500 hover:underline">
                             Login

@@ -194,11 +194,7 @@ export default function DashNav() {
                                     onClick={() => setMenuOpen(!menuOpen)}
                                 >
                                     <div className="flex items-center justify-center">
-                                        <img
-                                            className="h-8 w-8 rounded-full"
-                                            src="https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726963200&semt=ais_hybrid"
-                                            alt="User avatar"
-                                        />
+                                    {authUser ? (<p className="p-1 w-8 h-8 rounded-full text-white text-bold bg-green-800">{authUser.displayName[0]}</p>) : <img className="w-8 h-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"/> }  
                                         <RiArrowDropDownLine />
                                     </div>
                                 </button>

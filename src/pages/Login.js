@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../firebase.init.js'
 import { toast, ToastContainer } from "react-toastify";
-
+import SocialLogin from "../components/SocialLogin/index.js"
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -103,12 +103,7 @@ const Login = () => {
                         </button>
                     </form>
 
-                    <div className="mt-6">
-                        <button className="w-full border-solid border-2 border-black bg-white text-black py-2 rounded  flex justify-center items-center">
-                            <FcGoogle className="mr-2 text-2xl" /> {/* Google icon */}
-                            <span>Continue with Google</span>
-                        </button>
-                    </div>
+                    <SocialLogin/>
                     <div className="flex pt-5 justify-between text-sm">
                         <p>New to TaskFlow? <span><Link to="/register" className="text-blue-500 hover:underline">
                             Register
