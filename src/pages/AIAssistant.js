@@ -5,8 +5,12 @@ import Main from '../components/AI/Main/Main'
 import '../../src/index.css'
 import DashNav from '../components/DashNav';
 import { Helmet } from 'react-helmet-async';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import auth from "../firebase.init"
+import { Navigate, useLocation } from 'react-router-dom';
 
 const AIAssistant = () => {
+  
   return (
 
     <div className="max-w-screen-xl	mx-auto font-inter">

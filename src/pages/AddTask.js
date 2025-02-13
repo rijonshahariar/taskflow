@@ -6,24 +6,49 @@ import { IoAdd } from 'react-icons/io5';
 import { MdClose } from 'react-icons/md';
 import { RiDeleteBack2Line, RiDeleteBin2Line } from 'react-icons/ri';
 import { toast, ToastContainer } from 'react-toastify';
+import auth from "../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 
-// Main component
 export default function TaskTable() {
+
+    const [authUser, loading] = useAuthState(auth);
+
+    const getUserEmail = () => {
+        const user = auth.currentUser;
+        if (user) {
+            return user.email;
+        } else {
+            return "No user is signed in";
+        }
+    };
+    const userID = getUserEmail();
+    console.log(userID);
+
+    const navigate = useNavigate();
+
     const [tables, setTables] = useState(() => {
         const savedTables = localStorage.getItem('tables');
         return savedTables ? JSON.parse(savedTables) : [];
     });
 
+    const redirect = () => {
+        navigate("/login");
+    }
+
     useEffect(() => {
+
         const savedTables = JSON.parse(localStorage.getItem('tables')) || [];
         if (savedTables.length === 0) {
-            const newTable = { name: 'New Table', rows: [{ taskName: '', assignee: '', due: '', isSelected: false }] };
+            const newTable = { name: 'New Table', email: userID, rows: [{ taskName: '', assignee: '', due: '', isSelected: false }] };
             setTables([newTable]);
             localStorage.setItem('tables', JSON.stringify([newTable]));
         } else {
             setTables(savedTables);
         }
     }, []);
+
+
 
     // Save data to localStorage whenever 'tables' changes
     useEffect(() => {
@@ -38,6 +63,7 @@ export default function TaskTable() {
         const newTable = {
             id: tables.length + 1,
             name: "New Table",
+            email: userID,
             rows: [{ taskName: '', assignee: '', due: '', isSelected: false }],
         };
 
@@ -71,10 +97,12 @@ export default function TaskTable() {
                     }
                     return row;
                 });
+                
                 return { ...table, rows: updatedRows };
             }
             return table;
         });
+        
         setTables(updatedTables);
     };
 
@@ -166,7 +194,7 @@ export default function TaskTable() {
         <div className="p-4">
 
             <div class="fixed bottom-0 right-0 p-4">
-                <button class="bg-gray-800 hover:bg-gray-900 text-white text-2xl rounded-full w-12 h-12 flex items-center justify-center" onClick={handleAddNewTable}>
+                <button class="bg-gray-800 hover:bg-gray-900 text-white text-2xl rounded-full w-12 h-12 flex items-center justify-center" onClick={() => { authUser ? (handleAddNewTable()) : (redirect()) }}>
                     <IoAdd />
                 </button>
             </div>
@@ -288,7 +316,7 @@ export default function TaskTable() {
                     <button
                         title="Add Row"
                         className="text-3xl text-gray-500 hover:text-gray-400 rounded ms-2 mt-2"
-                        onClick={() => handleAddNewRow(table.id)}
+                        onClick={() => { authUser ? (handleAddNewRow(table.id)) : (redirect()) }}
                     >
                         <CgAddR />
                     </button>
@@ -297,7 +325,7 @@ export default function TaskTable() {
 
                 </div>
             ))}
-            
+
         </div>
     );
 }
