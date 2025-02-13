@@ -5,15 +5,25 @@ import { Helmet } from 'react-helmet-async'
 import { HiOutlineTrash } from 'react-icons/hi';
 import { IoMdAddCircle } from 'react-icons/io';
 import { toast, ToastContainer } from 'react-toastify';
+import auth from "../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const ReadingList = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [authUser, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+
     const [suggestedBooks, setSuggestedBooks] = useState([]);
     const [selectedBooks, setSelectedBooks] = useState([]);
     const [readingList, setReadingList] = useState(() => {
         const savedList = localStorage.getItem('readingList');
         return savedList ? JSON.parse(savedList) : [];
     });
+
+    const redirect = () => {
+        navigate("/login");
+      }
 
     // Fetch book suggestions from Google Books API
     const fetchSuggestions = async (term) => {
@@ -130,7 +140,7 @@ const ReadingList = () => {
                         className="w-full lg:w-1/2 p-3 border border-black border-2 rounded-md"
                     />
                     <button
-                        onClick={handleAddBooks}
+                        onClick={() =>{authUser ? (handleAddBooks()) : (redirect())}}
                         className="ml-4 px-2 text-3xl py-2 bg-black text-white rounded-md"
                     >
                         <IoMdAddCircle className='' />

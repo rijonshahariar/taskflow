@@ -8,10 +8,15 @@ import { SiOpenproject } from 'react-icons/si'
 import { IoMdCloudUpload } from 'react-icons/io'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css';
+import auth from "../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const Projects = () => {
 
   const [projects, setProjects] = useState([]);
+  const [authUser, loading] = useAuthState(auth);
+  const navigate = useNavigate();
   const [isModalOpen, setModalOpen] = useState(false);
   const [isTaskOpen, setTaskOpen] = useState(false);
 
@@ -124,6 +129,9 @@ const Projects = () => {
 
   const sProjects = projects.sort((a, b) => b.isFeatured - a.isFeatured);
 
+  const redirect = () => {
+    navigate("/login");
+  }
 
   return (
     <div className="max-w-screen-xl	mx-auto font-inter">
@@ -134,7 +142,7 @@ const Projects = () => {
       <div className="container mx-auto p-4">
       <div className='bg-white flex justify-center border border-4 border-black w-full text-black px-6 py-5 rounded-md mb-4'>
         <button
-        onClick={() => setModalOpen(true)}
+        onClick={() => {authUser ? (setModalOpen(true)) : (redirect())}}
         className="bg-black flex items-center text-white px-6 py-2 rounded-md shadow-lg"
       >
         <IoMdCloudUpload className='text-white text-xl me-3'/> Add New Project

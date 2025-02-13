@@ -155,7 +155,7 @@ export default function DashNav() {
                         {/* Right-side buttons */}
                         <div className="flex items-center space-x-4">
                             {/* New Job button (hidden on mobile) */}
-                            <a href={authUser ? '/ai' : '/login'} className="hidden md:flex border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-4 py-2 rounded-md items-center space-x-2">
+                            <a href={authUser ? '/assistant' : '/login'} className="hidden md:flex border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-4 py-2 rounded-md items-center space-x-2">
                                 <BsStars /> <span>TaskFlow AI</span>
                             </a>
 
@@ -302,7 +302,7 @@ export default function DashNav() {
                             >
                                 Calendar
                             </a>
-                            <a href='/ai' className="flex border border-indigo-600 font-medium bg-indigo-600 text-white px-4 py-2 justify-center rounded-md items-center space-x-2">
+                            <a href='/assistant' className="flex border border-indigo-600 font-medium bg-indigo-600 text-white px-4 py-2 justify-center rounded-md items-center space-x-2">
                                 <BsStars /> <span>TaskFlow AI </span>
                             </a>
                         </div>

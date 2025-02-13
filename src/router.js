@@ -8,6 +8,7 @@ import ReadingList from "./pages/ReadingList";
 import AIAssistant from "./pages/AIAssistant";
 import DailyRoutine from "./pages/Calendar";
 import Calendar from "./pages/Calendar";
+import RequireAuth from "./components/RequireAuth";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
     element: <ReadingList />,
   },
   {
-    path: "ai",
-    element: <AIAssistant />,
+    path: "assistant",
+    element: <RequireAuth><AIAssistant/></RequireAuth>,
   },
   {
     path: "calendar",
